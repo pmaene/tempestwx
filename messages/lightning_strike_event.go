@@ -7,9 +7,9 @@ import (
 
 type LightningStrikeEvent struct {
 	StationMessage
-	Time     time.Time
-	Distance float64
-	Energy   float64
+	Timestamp time.Time
+	Distance  float64
+	Energy    float64
 }
 
 func (m *LightningStrikeEvent) UnmarshalJSON(data []byte) error {
@@ -26,7 +26,7 @@ func (m *LightningStrikeEvent) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	m.Time = time.Unix(int64(a.Event[0]), 0)
+	m.Timestamp = time.Unix(int64(a.Event[0]), 0)
 	m.Distance = a.Event[1] * 1000
 	m.Energy = a.Event[2]
 

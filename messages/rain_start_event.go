@@ -7,7 +7,7 @@ import (
 
 type RainStartEvent struct {
 	StationMessage
-	Time time.Time
+	Timestamp time.Time
 }
 
 func (m *RainStartEvent) UnmarshalJSON(data []byte) error {
@@ -24,6 +24,6 @@ func (m *RainStartEvent) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	m.Time = time.Unix(int64(a.Event[0]), 0)
+	m.Timestamp = time.Unix(int64(a.Event[0]), 0)
 	return nil
 }

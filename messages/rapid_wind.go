@@ -7,7 +7,7 @@ import (
 
 type RapidWind struct {
 	StationMessage
-	Time      time.Time
+	Timestamp time.Time
 	Direction float64
 	Speed     float64
 }
@@ -26,7 +26,7 @@ func (m *RapidWind) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	m.Time = time.Unix(int64(a.Observations[0]), 0)
+	m.Timestamp = time.Unix(int64(a.Observations[0]), 0)
 	m.Direction = a.Observations[2]
 	m.Speed = a.Observations[1]
 

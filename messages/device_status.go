@@ -8,7 +8,7 @@ import (
 
 type DeviceStatus struct {
 	StationMessage
-	Time             time.Time
+	Timestamp        time.Time
 	Uptime           time.Duration
 	BatteryVoltage   float64
 	FirmwareRevision string
@@ -38,7 +38,7 @@ func (s *DeviceStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	s.Time = time.Unix(a.Timestamp, 0)
+	s.Timestamp = time.Unix(a.Timestamp, 0)
 	s.Uptime = time.Duration(a.Uptime * int64(time.Second))
 	s.BatteryVoltage = a.BatteryVoltage
 	s.FirmwareRevision = strconv.Itoa(int(a.FirmwareRevision))

@@ -51,7 +51,7 @@ func ParseResetFlag(f string) (ResetFlag, error) {
 
 type HubStatus struct {
 	Message
-	Time             time.Time
+	Timestamp        time.Time
 	Uptime           time.Duration
 	FirmwareRevision string
 	RadioStats       RadioStats
@@ -87,7 +87,7 @@ func (m *HubStatus) UnmarshalJSON(data []byte) error {
 		fs = append(fs, tmp)
 	}
 
-	m.Time = time.Unix(a.Timestamp, 0)
+	m.Timestamp = time.Unix(a.Timestamp, 0)
 	m.Uptime = time.Duration(a.Uptime * int64(time.Second))
 	m.FirmwareRevision = a.FirmwareRevision
 

@@ -36,7 +36,7 @@ func ParsePrecipitationType(t int) (PrecipitationType, error) {
 }
 
 type Report struct {
-	Time                           time.Time
+	Timestamp                      time.Time
 	RelativeHumidity               float64
 	StationPressure                float64
 	AirTemperature                 float64
@@ -63,7 +63,7 @@ func NewReport(r []float64) (Report, error) {
 	}
 
 	return Report{
-		Time:                           time.Unix(int64(r[0]), 0),
+		Timestamp:                      time.Unix(int64(r[0]), 0),
 		RelativeHumidity:               r[8],
 		StationPressure:                r[6] / 1000,
 		AirTemperature:                 r[7],
